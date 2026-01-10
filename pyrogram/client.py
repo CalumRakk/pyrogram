@@ -43,8 +43,10 @@ from pyrogram.crypto import aes
 from pyrogram.errors import CDNFileHashMismatch
 from pyrogram.errors import (
     SessionPasswordNeeded,
-    VolumeLocNotFound, ChannelPrivate,
-    BadRequest
+    VolumeLocNotFound, 
+    ChannelPrivate,
+    BadRequest,
+    ApiIdInvalid,
 )
 from pyrogram.handlers.handler import Handler
 from pyrogram.methods import Methods
@@ -357,6 +359,9 @@ class Client(Methods):
                         self.phone_number = value
 
                 sent_code = await self.send_code(self.phone_number)
+            except ApiIdInvalid as e:
+                print(e.MESSAGE)
+                raise e
             except BadRequest as e:
                 print(e.MESSAGE)
                 self.phone_number = None
