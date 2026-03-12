@@ -1,0 +1,10 @@
+compiler
+tests
+README.md
+COPYING
+COPYING.lesser
+Makefile
+MANIFEST.in
+NOTICE
+setup.py
+.github
